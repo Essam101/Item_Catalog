@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='category.css')}}" />
+    <script src="main.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        
+    </style>
+
+
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li><strong>{{message }}</strong></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    
+        {% if loggedIn %}
+            <button style=" width: 150px; height: 35px; background-color: #DDD; font-size :20px; margin: 20px; font-weight: 700; border-radius: 10px">
+
+            <a style="text-decoration: none" class="active" href="{{url_for('notconnect')}}">LogOut</a>
+            </button>
+            
+            {% else %}
+            <button style=" width: 150px; height: 35px; background-color: #DDD; font-size: 20px; margin: 20px; border-radius: 10px;
+                            font-weight: 700">
+
+            <a style="text-decoration: none" class="active" href="{{url_for('showLogin')}}">Login</a>
+            </button>
+            {% endif %}
+
+        <div style="margin: 10px; width: 200px; text-align: center; border: 2px ridge; border-radius: 50px;
+                    height: 80px; background-color: #DDD; font-size: 15px">
+        
+
+            
+            <h1 style="font-family: Arial, Helvetica, sans-serif;">Category</h1>
+        </div>
+    
+
+
+    {% for i in category %}
+    <div style="margin: 10px; width: 200px; text-align: center; border: 1px solid; border-radius: 50px; background-color: #EEE">
+        <P style="text-align: center; font-size: 25px; height: 20px">
+            <a style="text-decoration: none" href="{{url_for('itemView',category_id = i.id)}}">{{i.name}}</a>
+        </P>
+        </br>
+    </div>
+    {% endfor %}
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='newCate.css')}}" />
+
+    <title>New Item</title>
+</head>
+
+<body>
+
+    
+
+    <div style="text-align: center; border: 5px ridge; border-radius: 50px; height: 100px; background-color: #4accc2;">
+       
+    <h1 style="font-family: Arial, Helvetica, sans-serif;">Create New Item</h1>
+</br>
+</br>
+
+    <form action="{{ url_for('newItem',category_id = category_id) }}" method="POST">
+
+        Name :</br>
+        <input style="margin: 2px; width: 300px; height: 30px" type="text" name="name" required>
+        </br>
+        Description:</br> 
+        <input style="margin: 2px; width: 300px; height: 50px;" type="text" name="description" required>
+        </br>
+        
+         <input style="margin: 2px; width: 300px; height: 35px;" type="submit" value="create">
+       
+        <br>
+        <a href="{{ url_for('categoryView')}}">Cancel</a>
+        
+    </form>
+    </div>
+</body>
+
+</html>
